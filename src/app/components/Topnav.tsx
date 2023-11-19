@@ -1,8 +1,9 @@
 "use client"
 
-import React from 'react'
+import React, { use } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import axios from 'axios'
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -14,65 +15,58 @@ import {
     NavigationMenuViewport,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import {Search} from 'lucide-react'
+import { AccountForm } from './FormTemplate'
+import { useState, useEffect } from 'react'
+import Home from '../api/page'
+//import Data from './orgsDataList'
 
 
 
+const ORG = [
+    { label: "ORG 1", value: "org1" },
+    { label: "ORG 2", value: "org2" },
+    { label: "ORG 3", value: "org3" },
+    { label: "ORG 4", value: "org4" },
+    { label: "ORG 5", value: "org5" },
+    { label: "ORG 6", value: "org6" },
+    { label: "ORG 7", value: "org7" },
+    { label: "ORG 8", value: "org8" },
+    { label: "ORG 9", value: "org9" },
+]
 
-function Topnav() {
+
+
+async function Topnav(props : any) {
+
+    const [info, setInfo] = useState(null)
+    const [dataFromFirstApi, setDataFromFirstApi] = useState(null);
+    const [dataFromSecondApi, setDataFromSecondApi] = useState(null);
+    const [isLoading, setLoading] = useState(true)
+    const p = props.t
+
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/api/getUserInfo')
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         setInfo(data)
+            
+    //       })
+    //   }, [])
+    
     return (
         <div className="">
-
             <NavigationMenu>
-                <NavigationMenuList>
-                    {/* <NavigationMenuItem>
-                        <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <NavigationMenuLink>Link</NavigationMenuLink>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem> */}
+                <NavigationMenuList>                   
+                    <NavigationMenuItem>                       
+                    </NavigationMenuItem>
                     <NavigationMenuItem>
-                        {/* <Link href="#" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                Female
-                            </NavigationMenuLink>
-                        </Link> */}
-                        <Select>
-                            <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Select a Project" />
-                            </SelectTrigger>
-                            <SelectContent className="">
-                            {/* <div className='flex items-center bg-slate-100 my-2 rounded-lg static'>
-                                    <Search className='text-gray-700' />
-                                    <input type='text' placeholder='Search ' className='border-none p-2  rounded-lg bg-slate-100' />
-                                    </div> */}
-                                    
-                                <SelectGroup className="">
-                                    {/* <SelectLabel>Projects</SelectLabel> */}
-                                    
-                                    <SelectItem value="apple">Project A</SelectItem>
-                                    <SelectItem value="banana">Project B</SelectItem>
-                                    <SelectItem value="blueberry">Project C</SelectItem>
-                                    <SelectItem value="grapes">Project D</SelectItem>
-                                    <SelectItem value="pineapple">Project E</SelectItem>
-                                    
-                                </SelectGroup>
-                                
-                            </SelectContent>
-                        </Select>
+                        
+                        <AccountForm languages={ORG} name={"Select ORG"} />
+                        {/* <Data /> */}
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-
         </div>
     )
 }

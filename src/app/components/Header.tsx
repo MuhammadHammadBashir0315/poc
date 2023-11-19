@@ -21,12 +21,23 @@ import {
 
 function Header() {
     const isUserLoggedIn = true;
+    const [info, setInfo] = useState(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
+
     const dispatch = useDispatch();
 
     const handleClick = () => {
         setToggleDropdown((prev) => !prev)
     }
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/api/getUserInfo')
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         setInfo(data)
+            
+    //       })
+    //   }, [])
 
     return (
         <div className='flex items-center p-4 space-x-4 justify-between border-b-2'>

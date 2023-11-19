@@ -32,7 +32,7 @@ function TableTemplate() {
       
   return (
     <div>
-      <Table className="">
+      <Table className="border">
       {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
       <TableHeader>
         <TableRow>
