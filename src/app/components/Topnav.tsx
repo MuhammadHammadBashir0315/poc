@@ -45,14 +45,7 @@ async function Topnav(props : any) {
     const p = props.t
 
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/api/getUserInfo')
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         setInfo(data)
-            
-    //       })
-    //   }, [])
+   
     
     return (
         <div className="">
