@@ -19,7 +19,7 @@ function Test(props: any) {
       </div>
 
       {p.Tests.map((test: any) => (
-        <Accordion type="single" collapsible className="w-full ">
+        <Accordion key={test.ID} type="single" collapsible className="w-full ">
           <AccordionItem value="item-1" className=' border-x px-4 hover:bg-gray-50'>
             <AccordionTrigger className=''>
               <div className='flex justify-between w-full'>
