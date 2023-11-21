@@ -5,15 +5,7 @@ import { useState } from 'react'
 import { BookCheckIcon } from 'lucide-react'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+
 import { Search } from 'lucide-react'
 import { Grid2X2 } from 'lucide-react'
 import Link from 'next/link'
@@ -55,21 +47,12 @@ function Sidenav() {
   return (
     <div className='flex'>
       <div className={` border   h-screen duration-300 w-20 md:w-72  p-5 pt-8 relative space-y-4 bg-slate-100`}>
-        {/* <ChevronLeft className={`bg-white  text-blue-700 text-3xl rounded-full absolute -right-3 top-9 border ${!open && "rotate-180"}`} onClick={() => { setOpen(!open) }} /> */}
+        
         <div className={` scale-0 md:scale-100  `}>
 
           <AccountForm languages={data} name={"Select Project"} />
         </div>
-        {/* <div className='flex flex-col'>
-          <Link href={'/tests'} className={`inline-flex cursor-pointer items-center hover:bg-slate-200 hover:text-blue-500 duration-300 w-0 md:w-full`}>
-            <div><BookCheckIcon className=' text-4xl rounded cursor-pointer block float-left mr-2' /></div>
-            <h1 className={`text-black origin-left font-medium  duration-300 cursor-pointer text-sm p-2 hover:bg-slate-200 hover:text-blue-500 w-full scale-0 md:scale-100`}>Test1</h1>
-          </Link>
-          <Link href={'/support'} className={`inline-flex cursor-pointer items-center hover:bg-slate-200 hover:text-blue-500 duration-300 w-0 md:w-full`}>
-            <div><Grid2X2 className=' text-4xl rounded cursor-pointer block float-left mr-2' /></div>
-            <h1 className={`text-black origin-left font-medium  duration-300 cursor-pointer text-sm p-2 hover:bg-slate-200 hover:text-blue-500 w-full scale-0 md:scale-100`}>Support</h1>
-          </Link>
-        </div> */}
+    
         <ul className='flex flex-col gap-2 '>
           {navData.map(link =>
            <Link href={link.href} key={link.id} className={classNames({

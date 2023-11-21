@@ -30,8 +30,7 @@ function Header() {
         setToggleDropdown((prev) => !prev)
     }
 
-  
-
+    useEffect(()=>{})
     return (
         <div className='flex items-center p-4 space-x-4 justify-between border-b-2'>
             <div className='flex  items-center gap-6 md:gap-12 lg:gap-28 '>

@@ -54,41 +54,10 @@ function page() {
                 <Label htmlFor="name" className="text-right">
                   Type
                 </Label>
-                {/* <Select >
-                            <SelectTrigger className="w-[180px] focus:ring-0 focus:outline-none focus:ring-offset-0 ">
-                                <SelectValue placeholder="Type" className=''/>
-                            </SelectTrigger>
-                            <SelectContent className="">
-                            <div className='flex items-center bg-slate-100 my-2 rounded-lg static'>
-                                    <Search className='text-gray-700' />
-                                    <input type='text' placeholder='Search ' className='border-none p-2  rounded-lg bg-slate-100' />
-                                    </div>
-                                    
-                                <SelectGroup className="">
-                                    <SelectLabel>Projects</SelectLabel>
-                                    
-                                    <SelectItem value="org a">Support</SelectItem>
-                                    <SelectItem value="org b">Bug Request</SelectItem>
-                                    <SelectItem value="org c">Failure Request</SelectItem>
-                                    <SelectItem value="org d"></SelectItem>
-                                    <SelectItem value="org e">ORG E</SelectItem>
-                                    
-                                </SelectGroup>
-                                
-                            </SelectContent>
-                        </Select> */}
+               
                 <AccountForm languages={data} name={"Select Type"} />
               </div>
-              {/* <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Username
-              </Label>
-              <Input
-                id="username"
-                defaultValue="@peduarte"
-                className="col-span-3"
-              />
-            </div> */}
+            
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="name" className="text-right">
                   Subject

@@ -2,15 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react"
-// import { format } from "date-fns"
+
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-// import { Button } from "@/registry/new-york/ui/button"
+
 import { Button } from "@/components/ui/button"
-// import { Calendar } from "@/registry/new-york/ui/calendar"
+
 import {
   Command,
   CommandEmpty,
@@ -78,9 +78,9 @@ export function AccountForm(props :any) {
     const [open, setOpen] = useState(false)
     
     const [languages] = props.languages
-    console.log("in template")
-    console.log(languages)
-    console.log("in template after language")
+    // console.log("in template")
+    // console.log(languages)
+    // console.log("in template after language")
   
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
