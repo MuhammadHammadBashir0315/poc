@@ -31,6 +31,7 @@ function Topnav(props: any) {
         const postData = await postResponse.json();
         console.log('Post request result:', postData);
         setDataAfterPost(postData);
+        setFetchProjects(postData.data)
       } catch (error) {
         console.error('Error fetching or posting data:', error);
       } finally {
@@ -46,6 +47,7 @@ function Topnav(props: any) {
 
 
   console.log("In top navbar",fetchData)
+  console.log("data after Post",fetchProjects)
   
   return (
     <div className="">

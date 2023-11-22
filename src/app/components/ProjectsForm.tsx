@@ -26,7 +26,7 @@ type AccountFormValues = z.infer<typeof accountFormSchema>;
 // ... (previous imports)
 
 interface AccountFormProps {
-    data?: Array<{ ID: number; Name: string; Desc: string,  Projects: number[]; }> | null;
+    data?: Array<{ ID?: number; Name?: string; Desc?: string; }> | null;
     placeholder: string;
   }
   
@@ -40,9 +40,7 @@ interface AccountFormProps {
     console.log("in form",data)
     console.log("projects", projects)
     
-    useEffect(() => {
-      dispatch(AddArray(projects));
-    }, [dispatch, projects]);
+   
     
   
     const defaultValues: Record<string, any> = {
@@ -101,7 +99,7 @@ interface AccountFormProps {
                               onSelect={() => {
                                 form.setValue('selectedField', item.Name);
                                 setOpen(false);
-                                setProjects(item.Projects)
+                                // setProjects(item.Projects)
                               }}
                             >
                               {`${item.Name}`}
@@ -122,5 +120,3 @@ interface AccountFormProps {
   
   export default AccountForm;
 
-
-  

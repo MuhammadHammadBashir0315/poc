@@ -9,18 +9,20 @@ import { usePathname } from 'next/navigation'
 import { Search } from 'lucide-react'
 import { Grid2X2 } from 'lucide-react'
 import Link from 'next/link'
-import { AccountForm } from './FormTemplate'
+import AccountForm from './ProjectsForm'
+import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
 
-const data = [
-  { label: "Project 1", value: "proj1" },
-  { label: "Project 2", value: "proj2" },
-  { label: "Project 3", value: "proj3" },
-  { label: "Project 4", value: "proj4" },
-  { label: "Project 5", value: "proj5" },
-  { label: "Project 6", value: "proj6" },
-  { label: "Project 7", value: "proj7" },
-  { label: "Project 8", value: "proj8" },
-  { label: "Project 9", value: "proj9" },
+
+const newData:any = [
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
+  { ID: "Project 1", Name: "proj1", Desc:"description" , Projects: [] },
 ]
 
 const navData = [
@@ -44,13 +46,17 @@ function Sidenav() {
 
   const [open, setOpen] = useState(true)
   const currentPath = usePathname()
+  
+  const myArray = useSelector((state: { AddArray: any }) => state.AddArray);
+  console.log( "In side navigation",myArray)
   return (
     <div className='flex'>
       <div className={` border   h-screen duration-300 w-20 md:w-72  p-5 pt-8 relative space-y-4 bg-slate-100`}>
 
         <div className={` scale-0 md:scale-100  `}>
 
-          <AccountForm languages={data} name={"Select Project"} />
+          {/* <AccountForm data={data} placeholder={"Select Project"} /> */}
+          <AccountForm data={newData} placeholder={'Projects'}  />
         </div>
 
         <ul className='flex flex-col gap-2 '>

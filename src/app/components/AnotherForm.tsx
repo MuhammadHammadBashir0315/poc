@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
@@ -8,6 +8,8 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '
 import { Form, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import * as z from 'zod';
+import { useDispatch } from 'react-redux';
+import { AddArray } from '@/redux/features/projects-array-slice';
 
 const accountFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(30, { message: 'Name must not be longer than 30 characters.' }),
@@ -31,11 +33,17 @@ interface AccountFormProps {
   const AccountForm: React.FC<AccountFormProps> = (props: any) => {
     const { data = [] } = props.data;
     const {placeholder} = props
+    const dispatch = useDispatch()
+    const [open, setOpen] = useState(false);
+    const [projects, setProjects] = useState([])
 
     console.log("in form",data)
+    console.log("projects", projects)
     
-  
-    const [open, setOpen] = useState(false);
+    // useEffect(() => {
+    //   dispatch(AddArray(projects));
+    // }, [dispatch, projects]);
+    
   
     const defaultValues: Record<string, any> = {
       name: '',
@@ -76,7 +84,7 @@ interface AccountFormProps {
                       )}
                       onClick={handleClick}
                     >
-                      {field.value ? `${field.value}'s ${placeholder}` : `Select ${placeholder}`}
+                      {field.value ? `${field.value}` : `Select ${placeholder}`}
                       <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </PopoverTrigger>
@@ -93,6 +101,8 @@ interface AccountFormProps {
                               onSelect={() => {
                                 form.setValue('selectedField', item.Name);
                                 setOpen(false);
+                                setProjects(item.Projects)
+                                dispatch(AddArray(item.Projects));
                               }}
                             >
                               {`${item.Name}`}
@@ -112,4 +122,8 @@ interface AccountFormProps {
   };
   
   export default AccountForm;
+
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}
   
