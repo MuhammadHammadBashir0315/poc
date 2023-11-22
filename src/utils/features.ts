@@ -1,4 +1,4 @@
-import Data from "@/app/tests/testslist"
+
 import axios from "axios"
 
 export const getUserInfo = async () => {

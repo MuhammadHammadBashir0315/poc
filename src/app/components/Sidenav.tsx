@@ -27,7 +27,7 @@ const navData = [
   {
     id: 1,
     name: 'test',
-    href: '/',
+    href: '/tests',
     icon: <BookCheckIcon />
   },
   {
