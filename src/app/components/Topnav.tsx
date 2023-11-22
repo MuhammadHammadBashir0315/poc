@@ -1,75 +1,70 @@
-"use client"
+import React, { useState, useEffect } from 'react';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
+import AccountForm from './AnotherForm';
 
-import React, { use } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import axios from 'axios'
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-    navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { AccountForm } from './FormTemplate'
-import { useState, useEffect } from 'react'
-import Home from '../api/page'
-//import Data from './orgsDataList'
-import { getOrgs } from '@/utils/features'
+function Topnav(props: any) {
+  const [fetchData, setFetchData] = useState(null);
+  const [fetchProjects , setFetchProjects] = useState()
+  const [dataAfterPost, setDataAfterPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // Fetch data and perform POST request on component mount
+    const fetchDataAndPost = async () => {
+      try {
+        // GET request
+        const response = await fetch('http://localhost:3000/api/getUserInfo');
+        const data = await response.json();
+        setFetchData(data?.data?.orgs);
+        
+        
 
+        // POST request using the fetched data
+        const postResponse = await fetch('http://localhost:3000/api/getOrg', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ OrgIDs: data?.data?.orgs }),
+        });
 
+        const postData = await postResponse.json();
+        console.log('Post request result:', postData);
+        setDataAfterPost(postData);
+      } catch (error) {
+        console.error('Error fetching or posting data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
+    fetchDataAndPost();
 
-const ORG = [
-    { label: "ORG 1", value: "org1" },
-    { label: "ORG 2", value: "org2" },
-    { label: "ORG 3", value: "org3" },
-    { label: "ORG 4", value: "org4" },
-    { label: "ORG 5", value: "org5" },
-    { label: "ORG 6", value: "org6" },
-    { label: "ORG 7", value: "org7" },
-    { label: "ORG 8", value: "org8" },
-    { label: "ORG 9", value: "org9" },
-]
-
-
-
-
-async function Topnav(props : any) {
-    
-
+    // Cleanup function (optional)
    
-
-   
-    
-
-    
+  }, []);
 
 
-
-    
-    return (
-        <div className="">
-            <NavigationMenu>
-                <NavigationMenuList>                   
-                    <NavigationMenuItem>                       
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        
-                        
-                        <AccountForm languages={ORG} name={"Select ORG"} />
-                       
-
-                    </NavigationMenuItem>
-                </NavigationMenuList>
-            </NavigationMenu>
-        </div>
-    )
+  console.log("In top navbar",fetchData)
+  
+  return (
+    <div className="">
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            {isLoading ? (
+              
+              <div>Loading...</div>
+            ) : (
+              <AccountForm data={dataAfterPost} placeholder='organization' />
+            )}
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
+  );
 }
 
-export default Topnav
+
+
+export default Topnav;

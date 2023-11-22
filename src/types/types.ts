@@ -4,11 +4,7 @@ export type userInfoResp = {
     lastName: string,
     email: string,
 
-    currentOrg: number,
-    currentProject: number,
-
-    orgs: number[],
-    projects: number[]
+    orgs: number[],  // Organizations the user is part of
 }
 
 export type getProjectInput = {
@@ -29,6 +25,7 @@ export type getOrgResponse = {
     ID: number,
     Name: string,
     Desc: string
+    Projects: number[] // Projects in this org
 };
 
 export type getTestsInput = {

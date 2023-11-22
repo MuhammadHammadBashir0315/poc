@@ -13,7 +13,8 @@ export async function POST(request: Request) {
     response.push({
         ID: ID,
         Name: `Organization ${ID}`,
-        Desc: `Organization ${ID} description here`
+        Desc: `Organization ${ID} description here`,
+        Projects: [2, 4, 6]
     })
   }
 
