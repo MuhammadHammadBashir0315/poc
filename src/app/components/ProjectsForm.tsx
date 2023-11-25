@@ -10,6 +10,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import * as z from 'zod';
 import { useDispatch } from 'react-redux';
 import { AddArray } from '@/redux/features/projects-array-slice';
+import { addValue } from '@/redux/features/selected-project-slice';
+
+
 
 const accountFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(30, { message: 'Name must not be longer than 30 characters.' }),
@@ -26,21 +29,23 @@ type AccountFormValues = z.infer<typeof accountFormSchema>;
 // ... (previous imports)
 
 interface AccountFormProps {
-    data?: Array<{ ID?: number; Name?: string; Desc?: string; }> | null;
+    data?: Array<{ ID?: number; Name?: string; Desc?: string,  Projects: number[]; }> | null;
     placeholder: string;
   }
   
   const AccountForm: React.FC<AccountFormProps> = (props: any) => {
-    const { data = [] } = props.data;
+    const { data = [] } = props;
     const {placeholder} = props
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false);
     const [projects, setProjects] = useState([])
 
-    console.log("in form",data)
-    console.log("projects", projects)
+    // console.log("in form",data)
+    // console.log("projects", projects)
     
-   
+    // useEffect(() => {
+    //   dispatch(AddArray(projects));
+    // }, [dispatch, projects]);
     
   
     const defaultValues: Record<string, any> = {
@@ -92,17 +97,18 @@ interface AccountFormProps {
                       <CommandEmpty>{`No ${placeholder} found.`}</CommandEmpty>
                       <CommandGroup>
                         {Array.isArray(data) &&
-                          data.map((item) => (
+                          data.map((element , index) => (
                             <CommandItem
-                              key={item.ID}
-                              value={item.Name}
+                              key={index}
+                              value={element}
                               onSelect={() => {
-                                form.setValue('selectedField', item.Name);
+                                form.setValue('selectedField', element);
                                 setOpen(false);
                                 // setProjects(item.Projects)
+                                dispatch(addValue(element))
                               }}
                             >
-                              {`${item.Name}`}
+                              {`${element}`}
                             </CommandItem>
                           ))}
                       </CommandGroup>

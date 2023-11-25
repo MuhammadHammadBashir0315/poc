@@ -37,12 +37,15 @@ interface AccountFormProps {
     const [open, setOpen] = useState(false);
     const [projects, setProjects] = useState([])
 
-    console.log("in form",data)
-    console.log("projects", projects)
+    // console.log("in form",data)
+    // console.log("projects", projects)
     
-    // useEffect(() => {
-    //   dispatch(AddArray(projects));
-    // }, [dispatch, projects]);
+    useEffect(() => {
+      // console.log('Dispatching new array:', projects);
+      dispatch(AddArray(projects));
+      
+
+    }, [dispatch, projects]);
     
   
     const defaultValues: Record<string, any> = {

@@ -24,7 +24,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { AccountForm } from '../components/FormTemplate'
+//import { AccountForm } from '../components/FormTemplate'
 
 const data = [
   { label: "Support", value: "support" },
@@ -55,7 +55,7 @@ function page() {
                   Type
                 </Label>
                
-                <AccountForm languages={data} name={"Select Type"} />
+                {/* <AccountForm languages={data} name={"Select Type"} /> */}
               </div>
             
               <div className="grid grid-cols-4 items-center gap-4">

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion"
 
 function Test(props: any) {
-  const p = props.t.data
+  const p = props.t
   // console.log(p.Tests[0].ID)
   return (
     <div className='w-full'>

@@ -4,7 +4,7 @@ import AccountForm from './AnotherForm';
 
 function Topnav(props: any) {
   const [fetchData, setFetchData] = useState(null);
-  const [fetchProjects , setFetchProjects] = useState()
+  const [fetchProjects, setFetchProjects] = useState()
   const [dataAfterPost, setDataAfterPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,8 +16,8 @@ function Topnav(props: any) {
         const response = await fetch('http://localhost:3000/api/getUserInfo');
         const data = await response.json();
         setFetchData(data?.data?.orgs);
-        
-        
+
+
 
         // POST request using the fetched data
         const postResponse = await fetch('http://localhost:3000/api/getOrg', {
@@ -29,7 +29,7 @@ function Topnav(props: any) {
         });
 
         const postData = await postResponse.json();
-        console.log('Post request result:', postData);
+        // console.log('Post request result:', postData);
         setDataAfterPost(postData);
         setFetchProjects(postData.data)
       } catch (error) {
@@ -42,20 +42,21 @@ function Topnav(props: any) {
     fetchDataAndPost();
 
     // Cleanup function (optional)
-   
+
   }, []);
 
 
-  console.log("In top navbar",fetchData)
-  console.log("data after Post",fetchProjects)
-  
+  // console.log("In top navbar", fetchData)
+  // console.log("data of fetch projects", fetchProjects)
+  console.log("data after post inside TOP NAV" , dataAfterPost)
+
   return (
     <div className="">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
             {isLoading ? (
-              
+
               <div>Loading...</div>
             ) : (
               <AccountForm data={dataAfterPost} placeholder='organization' />

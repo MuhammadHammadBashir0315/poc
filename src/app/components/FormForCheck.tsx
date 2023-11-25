@@ -10,6 +10,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import * as z from 'zod';
 import { useDispatch } from 'react-redux';
 import { AddArray } from '@/redux/features/projects-array-slice';
+import { addValue } from '@/redux/features/selected-project-slice';
+
 
 const accountFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(30, { message: 'Name must not be longer than 30 characters.' }),
@@ -30,18 +32,22 @@ interface AccountFormProps {
     placeholder: string;
   }
   
-  const AccountForm: React.FC<AccountFormProps> = (props: any) => {
-    const { data = [] } = props.data;
+  const FormForCheck: React.FC<AccountFormProps> = (props: any) => {
+    const { data = [] } = props;
+    console.log("data in check form" , data)
     const {placeholder} = props
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false);
     const [projects, setProjects] = useState([])
 
-    console.log("in form",data)
-    console.log("projects", projects)
+    // console.log("in form",data)
+    // console.log("projects", projects)
     
     useEffect(() => {
+      // console.log('Dispatching new array:', projects);
       dispatch(AddArray(projects));
+      
+
     }, [dispatch, projects]);
     
   
@@ -93,21 +99,23 @@ interface AccountFormProps {
                       <CommandInput placeholder={`Search ${placeholder}...`} />
                       <CommandEmpty>{`No ${placeholder} found.`}</CommandEmpty>
                       <CommandGroup>
-                        {Array.isArray(data) &&
-                          data.map((item) => (
-                            <CommandItem
-                              key={item.ID}
-                              value={item.Name}
-                              onSelect={() => {
-                                form.setValue('selectedField', item.Name);
-                                setOpen(false);
-                                setProjects(item.Projects)
-                              }}
-                            >
-                              {`${item.Name}`}
-                            </CommandItem>
-                          ))}
-                      </CommandGroup>
+                      {Array.isArray(data) &&
+                        data.flatMap((item) => item.data.map((project: { ID: React.Key | null | undefined; Name: string | undefined; }) => (
+                          <CommandItem
+                            key={project.ID}
+                            value={project.Name}
+                            onSelect={() => {
+                              form.setValue('selectedField', project.Name);
+                              setOpen(false);
+                            //   setProjects(item.Projects); // Assuming you want to set projects here
+                              // dispatch(AddArray(item.Projects));
+                              dispatch(addValue(project.ID))
+                            }}
+                          >
+                            {`${project.Name}`}
+                          </CommandItem>
+                        )))}
+                    </CommandGroup>
                     </Command>
                   </PopoverContent>
                 </Popover>
@@ -120,7 +128,9 @@ interface AccountFormProps {
     );
   };
   
-  export default AccountForm;
+  export default FormForCheck;
 
-
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}
   
