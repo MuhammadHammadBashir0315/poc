@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import Table from '../components/TableTemplate'
 import Link from 'next/link'
@@ -25,6 +26,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 //import { AccountForm } from '../components/FormTemplate'
+import AccountForm from '../components/SupportDropdown'
 
 const data = [
   { label: "Support", value: "support" },
@@ -45,17 +47,19 @@ function page() {
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>New Ticket</DialogTitle>
+
               <DialogDescription>
                 {/* Make changes to your profile here. Click save when you're done. */}
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
+                
                 <Label htmlFor="name" className="text-right">
                   Type
                 </Label>
                
-                {/* <AccountForm languages={data} name={"Select Type"} /> */}
+                <div><AccountForm data = {data} placeholder='type '/></div>
               </div>
             
               <div className="grid grid-cols-4 items-center gap-4">

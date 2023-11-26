@@ -22,6 +22,7 @@ import {
 function Header() {
     const isUserLoggedIn = true;
     const [info, setInfo] = useState(null)
+    const [popoverOpen, setPopoverOpen] = useState(false);
     const [toggleDropdown, setToggleDropdown] = useState(false)
 
     const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function Header() {
             </div>
             <div className='flex relative'>
                 {isUserLoggedIn ?
-                    (<div className=''><Popover>
+                    (<div className=''><Popover  open={popoverOpen} onOpenChange={setPopoverOpen}>
                         <PopoverTrigger>
                             <div className='w-full'><Image src={avatar}
                                 width={37}
@@ -63,10 +64,11 @@ function Header() {
                             <div className='w-fit'>
                                 <Link href="/profile"
                                     className=" font-inter mt-2 text-gray-700 hover:text-blue-500 transition duration-150 font-medium w-full py-2 px-2"
-                                    onClick={() => { setToggleDropdown(false) }}>My Profile</Link></div>
+                                    onClick={() => {  setPopoverOpen(false)}}>My Profile</Link></div>
                             <button type="button"
                                 onClick={() => {
                                     setToggleDropdown(false)
+                                    setPopoverOpen(false);
                                     //signOut()
                                 }} className="mt-5 self-center  rounded-full  font-semibold border-white bg-blue-500 py-1.5 px-5 text-white transition-all hover:bg-blue-200 hover:text-black text-center font-inter flex items-center justify-center">
                                 Sign Out
