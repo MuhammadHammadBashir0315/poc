@@ -37,5 +37,6 @@
 //     }
 //   };
 
-export const headers = { 'Access-Control-Allow-Origin': '*', };
+ const headers = { 'Access-Control-Allow-Origin': '*', };
+ export default headers
   
