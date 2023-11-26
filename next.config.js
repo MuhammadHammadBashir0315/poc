@@ -37,9 +37,9 @@
 //     }
 //   };
 
-// module.exports = { headers: { 'Access-Control-Allow-Origin': '*', }, };
-const nextjsCors = require('nextjs-cors');
+module.exports = { headers: { 'Access-Control-Allow-Origin': '*', }, };
+// const nextjsCors = require('nextjs-cors');
 
-module.exports = {
-  middleware: [nextjsCors()],
-};
+// module.exports = {
+//   middleware: [nextjsCors()],
+// };
