@@ -31,6 +31,7 @@ import { useSelector } from 'react-redux';
 
         // POST request using the fetched data
         const postResponse = await fetch('http://localhost:3000/api/getTests', {
+          mode: 'no-cors',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
