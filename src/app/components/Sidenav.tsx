@@ -67,23 +67,19 @@ function Sidenav() {
         for (const id of myArray) {
           try {
             const response = await fetch('http://localhost:3000/api/getProject', {
-
+              
               method: 'POST',
               headers: {
                 // 'Content-Type': 'application/json',
-                "Access-Control-Allow-Credentials": "true",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-                "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
               },
               body: JSON.stringify({ ProjectIDs: [id] }),
             });
-
+          
             if (!response.ok) {
               const errorMessage = await response.text();
               throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
             }
-
+          
             const data = await response.json();
             // console.log(`Data for ID ${id}:`, data);
             setProsData(data);
