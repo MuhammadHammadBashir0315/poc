@@ -24,7 +24,7 @@ function Topnav(props: any) {
           
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
           },
           body: JSON.stringify({ OrgIDs: data?.data?.orgs }),
         });
