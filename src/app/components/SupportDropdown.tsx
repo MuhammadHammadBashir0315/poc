@@ -50,7 +50,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
   };
 
   const onSubmit = (formData: Record<string, any>) => {
-    console.log('Submitted data:', formData);
+    // console.log('Submitted data:', formData);
   };
 
   return (

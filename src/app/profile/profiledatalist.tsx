@@ -24,7 +24,7 @@ function Profiledatalist(){
             const userData = await response.json();
             setUser(userData.data);
           } catch (error) {
-            console.log('Error fetching user data:', error);
+            // console.log('Error fetching user data:', error);
           }
         };
     
@@ -32,7 +32,7 @@ function Profiledatalist(){
         fetchUserData();
       }, []);
 
-    console.log("fetch user data ",user)
+    // console.log("fetch user data ",user)
 
     return(
         <div className="w-fit flex flex-col gap-2 text-start ">

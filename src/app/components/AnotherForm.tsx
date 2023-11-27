@@ -65,7 +65,7 @@ interface AccountFormProps {
   
     const onSubmit = (formData: Record<string, any>) => {
       // Handle form submission
-      console.log('Submitted data:', formData);
+      // console.log('Submitted data:', formData);
     };
   
     return (

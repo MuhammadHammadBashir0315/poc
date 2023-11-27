@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
   const [dataAfterPost, setDataAfterPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const ProjectID = useSelector((state:any) => state.Selectedproject);
-        console.log("selected project id is :" , ProjectID)
+        // console.log("selected project id is :" , ProjectID)
   useEffect(() => {
     // Fetch data and perform POST request on component mount
     const fetchDataAndPost = async () => {
@@ -40,7 +40,7 @@ import { useSelector } from 'react-redux';
         });
 
         const postData = await postResponse.json();
-        console.log('Post request result in Tests:', postData);
+        // console.log('Post request result in Tests:', postData);
         setDataAfterPost(postData.data);
         // setFetchProjects(postData)
       } catch (error) {

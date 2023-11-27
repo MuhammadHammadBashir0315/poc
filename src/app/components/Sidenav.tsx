@@ -56,14 +56,14 @@ function Sidenav() {
   const myArray = useSelector((state: any) => state.Projects);
   // console.log("Inside side navigation", myArray)
   // console.log('Updated Projects Array Inside side navigation:', myArray);
-  console.log(myArray)
+  // console.log(myArray)
   useEffect(() => {
     // console.log("control added in use Effect ")
     const fetchData = async () => {
       // console.log("control added in fetch data ")
       const accumulatedData = [];
       if (myArray) {
-        console.log("control added in IF statement")
+        // console.log("control added in IF statement")
         for (const id of myArray) {
           try {
             const response = await fetch('http://localhost:3000/api/getProject', {
@@ -81,7 +81,7 @@ function Sidenav() {
             }
           
             const data = await response.json();
-            console.log(`Data for ID ${id}:`, data);
+            // console.log(`Data for ID ${id}:`, data);
             setProsData(data);
             accumulatedData.push(data);
           } catch (error) {
@@ -95,8 +95,8 @@ function Sidenav() {
     fetchData();
   }, [myArray]);
 
-  console.log("Data iside navigation bar" , prosData)
-  console.log("data in single array", allProsData)
+  // console.log("Data iside navigation bar" , prosData)
+  // console.log("data in single array", allProsData)
 
   return (
     <div className='flex'>

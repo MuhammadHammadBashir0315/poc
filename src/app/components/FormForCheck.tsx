@@ -34,7 +34,7 @@ interface AccountFormProps {
   
   const FormForCheck: React.FC<AccountFormProps> = (props: any) => {
     const { data = [] } = props;
-    console.log("data in check form" , data)
+    // console.log("data in check form" , data)
     const {placeholder} = props
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false);
@@ -68,7 +68,7 @@ interface AccountFormProps {
   
     const onSubmit = (formData: Record<string, any>) => {
       // Handle form submission
-      console.log('Submitted data:', formData);
+      // console.log('Submitted data:', formData);
     };
   
     return (

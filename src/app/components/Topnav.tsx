@@ -49,7 +49,7 @@ function Topnav(props: any) {
 
   // console.log("In top navbar", fetchData)
   // console.log("data of fetch projects", fetchProjects)
-  console.log("data after post inside TOP NAV" , dataAfterPost)
+  // console.log("data after post inside TOP NAV" , dataAfterPost)
 
   return (
     <div className="">
