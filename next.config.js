@@ -20,7 +20,8 @@
 
 // module.exports = nextConfig
 
-module.exports = {
+// module.exports = {
+  const nextConfig = {
     async headers() {
       return [
         {
@@ -36,10 +37,5 @@ module.exports = {
       ]
     }
   };
+// }
 
-// module.exports = { headers: { 'Access-Control-Allow-Origin': '*', }, };
-// const nextjsCors = require('nextjs-cors');
-
-// module.exports = {
-//   middleware: [nextjsCors()],
-// };
