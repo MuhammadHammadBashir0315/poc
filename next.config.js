@@ -1,4 +1,4 @@
-// next.config.js
+// // next.config.js
 
 /** @type {import('next').NextConfig} */
 // const nextConfig = {
@@ -20,8 +20,7 @@
 
 // module.exports = nextConfig
 
-// module.exports = {
-  const nextConfig = {
+module.exports = {
     async headers() {
       return [
         {
@@ -37,5 +36,10 @@
       ]
     }
   };
-// }
 
+// module.exports = { headers: { 'Access-Control-Allow-Origin': '*', }, };
+// const nextjsCors = require('nextjs-cors');
+
+// module.exports = {
+//   middleware: [nextjsCors()],
+// };
