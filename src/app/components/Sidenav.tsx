@@ -69,9 +69,9 @@ function Sidenav() {
             const response = await fetch('http://localhost:3000/api/getProject', {
               
               method: 'POST',
-              headers: {
-                // 'Content-Type': 'application/json',
-              },
+              // headers: {
+              //   // 'Content-Type': 'application/json',
+              // },
               body: JSON.stringify({ ProjectIDs: [id] }),
             });
           

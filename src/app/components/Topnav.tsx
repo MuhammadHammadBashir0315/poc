@@ -23,9 +23,9 @@ function Topnav(props: any) {
         const postResponse = await fetch('http://localhost:3000/api/getOrg', {
           
           method: 'POST',
-          headers: {
-            // 'Content-Type': 'application/json',
-          },
+          // headers: {
+          // 'Content-Type': 'application/json',
+          // },
           body: JSON.stringify({ OrgIDs: data?.data?.orgs }),
         });
 
